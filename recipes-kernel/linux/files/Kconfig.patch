@@ -1,0 +1,10 @@
+--- linux-3.18.31/drivers/Kconfig	2019-06-26 21:26:58.000000000 +0200
++++ linux-3.18.31/drivers/Kconfig.patched	2021-01-22 22:45:05.236322738 +0100
+@@ -1,6 +1,6 @@
+ menu "Device Drivers"
+ 
+-source "drivers/parrot/Kconfig
++source "drivers/parrot/Kconfig"
+ 
+ source "drivers/base/Kconfig"
+ 

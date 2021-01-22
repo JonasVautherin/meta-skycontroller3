@@ -1,0 +1,48 @@
+commit d0f22202ea9341a37139adb096ea631eac928659
+Author: Jonas Vautherin <jonas.vautherin@gmail.com>
+Date:   Mon Feb 8 16:31:48 2021 +0100
+
+    Try to fix dts
+
+diff --git a/arch/arm/boot/dts/Makefile b/arch/arm/boot/dts/Makefile
+index dbc25feb..403aa2fa 100755
+--- a/arch/arm/boot/dts/Makefile
++++ b/arch/arm/boot/dts/Makefile
+@@ -362,7 +362,8 @@ dtb-$(CONFIG_ARCH_QCOM) += \
+ 	qcom-ipq8064-ap148.dtb \
+ 	qcom-msm8660-surf.dtb \
+ 	qcom-msm8960-cdp.dtb \
+-	qcom-msm8974-sony-xperia-honami.dtb
++	qcom-msm8974-sony-xperia-honami.dtb \
++    msm8909-pm8916-mpp3-hw00.dtb
+ dtb-$(CONFIG_ARCH_ROCKCHIP) += \
+ 	rk3066a-bqcurie2.dtb \
+ 	rk3188-radxarock.dtb \
+diff --git a/arch/arm/boot/dts/qcom/msm8909-pm8916-mpp3-hw00.dts b/arch/arm/boot/dts/msm8909-pm8916-mpp3-hw00.dts
+similarity index 99%
+rename from arch/arm/boot/dts/qcom/msm8909-pm8916-mpp3-hw00.dts
+rename to arch/arm/boot/dts/msm8909-pm8916-mpp3-hw00.dts
+index eb858dac..1af83da3 100644
+--- a/arch/arm/boot/dts/qcom/msm8909-pm8916-mpp3-hw00.dts
++++ b/arch/arm/boot/dts/msm8909-pm8916-mpp3-hw00.dts
+@@ -13,7 +13,7 @@
+ 
+ /dts-v1/;
+ 
+-#include "msm8909-pm8916-mpp2-common.dtsi"
++#include "qcom/msm8909-pm8916-mpp2-common.dtsi"
+ 
+ / {
+ 	model = "mpp3";
+diff --git a/arch/arm/boot/dts/qcom/Makefile b/arch/arm/boot/dts/qcom/Makefile
+index e155ec97..4896c18f 100644
+--- a/arch/arm/boot/dts/qcom/Makefile
++++ b/arch/arm/boot/dts/qcom/Makefile
+@@ -266,7 +266,6 @@ dtb-$(CONFIG_ARCH_MSM8916) += msm8952-qrd-skum.dtb \
+ dtb-$(CONFIG_ARCH_MSM8909) += msm8909-pm8916-mtp.dtb \
+ 	msm8909-pm8916-mpp2-hw00.dtb \
+ 	msm8909-pm8916-mpp2-hw01.dtb \
+-	msm8909-pm8916-mpp3-hw00.dtb \
+ 	msm8909w-wtp.dtb \
+ 	apq8009w-wtp.dtb \
+ 	apq8009w-cdp.dtb \

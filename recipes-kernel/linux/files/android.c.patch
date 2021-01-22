@@ -1,0 +1,36 @@
+--- linux-3.18.31/drivers/usb/gadget/android.c
++++ linux-3.18.31/drivers/usb/gadget/android.c
+@@ -2378,8 +2378,7 @@ rndis_function_bind_config(struct android_usb_function *f,
+ 		rndis_control_intf.bInterfaceProtocol =	 0x03;
+ 	}
+ 
+-	return rndis_bind_config_vendor(c, rndis->ethaddr, rndis->vendorID,
+-					   rndis->manufacturer, rndis->dev);
++	return 0;
+ }
+ 
+ static int rndis_qc_function_bind_config(struct android_usb_function *f,
+@@ -2624,7 +2623,7 @@ static ssize_t rndis_rx_trigger_show(struct device *dev,
+ 		struct device_attribute *attr, char *buf)
+ {
+ 	bool write = false;
+-	int rx_trigger = rndis_rx_trigger(write);
++	int rx_trigger = -EINVAL; //rndis_rx_trigger(write);
+ 
+ 	return snprintf(buf, PAGE_SIZE, "%d\n", rx_trigger);
+ }
+@@ -2635,10 +2634,10 @@ static ssize_t rndis_rx_trigger_store(struct device *dev,
+ 	int value;
+ 	bool write = true;
+ 
+-	if (kstrtoint(buf, 10, &value)) {
+-		rndis_rx_trigger(write);
+-		return size;
+-	}
++	//if (kstrtoint(buf, 10, &value)) {
++	//	rndis_rx_trigger(write);
++	//	return size;
++	//}
+ 	return -EINVAL;
+ }
+ 
